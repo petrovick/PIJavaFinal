@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/login")
-public class JetSkyServlet extends HttpServlet{
-
+public class JetSkyServlet extends HttpServlet
+{
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException
 	{
 		String username = request.getParameter("username");
@@ -19,4 +19,15 @@ public class JetSkyServlet extends HttpServlet{
 		String c = request.getParameter("cor");
 		out.println("<h1>Cervejas</h1>");
 	}
+
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException
+	{
+		String username = request.getParameter("username");
+        String password = request.getParameter("password");
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		String c = request.getParameter("cor");
+		out.println("<h1>Refrigerante</h1>");
+	}
+	
 }
