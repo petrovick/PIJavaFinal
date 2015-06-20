@@ -6,11 +6,18 @@
 <html>
 	<body>
 		<h2>Hello World! teste</h2>
-		<form action="JetSkyServlet" method="post">
-		    <input type="text" name="username">
-		    <input type="password" name="password">
-		    <input type="submit" value="login">
-		    <span class="error">${error}</span>
-		</form>
+		<div id="formulario">
+			<form action="JetSkyServlet" method="post">
+				<input type="hidden" name="_id" id="_id" value="${_id}"/>
+				<label>Nome</label>
+				<input type="text" name="descricao" id="descricao" value="${descricao}"/>
+				<label>Login</label>
+				<input type="text" name="hp" id="hp" value="${hp}" />
+				<label>Senha</label>
+				<input type="text" name="peso" id="peso" value="${peso}" />
+				<input type="submit" id="buscar" value="Salvar" />
+			</form>
+		</div>
+
 	</body>
 </html>
