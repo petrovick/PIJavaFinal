@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.bson.types.ObjectId;
 
 @WebServlet("/JetSkyServlet")
-public class JetSkyServlet extends HttpServlet
+public class JetSkiServlet extends HttpServlet
 {
 	private static final long serialVersionUID = -7321681160776582861L;
 
@@ -31,7 +31,7 @@ public class JetSkyServlet extends HttpServlet
 		out.println("<h1>Cervejas</h1><p>" + mensagem + "</p>");
 	}
 	
-	private String validar(String descricao, String hp, String peso)
+	public String validar(String descricao, String hp, String peso)
 	{
 		String mensagem = null;
 		try

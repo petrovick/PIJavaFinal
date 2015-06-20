@@ -7,6 +7,14 @@ public class JetSki {
 	private String descricao;
 	private Integer hp;
 	private Integer peso;
+	public JetSki(){}
+	public JetSki(ObjectId _id, String descricao, Integer hp, Integer peso) {
+		super();
+		this._id = _id;
+		this.descricao = descricao;
+		this.hp = hp;
+		this.peso = peso;
+	}
 	public ObjectId get_id() {
 		return _id;
 	}
