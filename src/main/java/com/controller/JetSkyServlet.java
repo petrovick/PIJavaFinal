@@ -23,10 +23,30 @@ public class JetSkyServlet extends HttpServlet
 		j.setDescricao(request.getParameter("descricao"));
 		j.setHp(Integer.parseInt(request.getParameter("hp")));
 		j.setPeso(Integer.parseInt(request.getParameter("peso")));
-		String retorno = jsa.create(j);
+		String mensagem = validar(request.getParameter("descricao"), request.getParameter("hp"), request.getParameter("peso"));
+		if(mensagem == null)
+			mensagem = jsa.create(j);
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		out.println("<h1>Cervejas</h1><p>" + retorno + "</p>");
+		out.println("<h1>Cervejas</h1><p>" + mensagem + "</p>");
+	}
+	
+	private String validar(String descricao, String hp, String peso)
+	{
+		String mensagem = null;
+		try
+		{
+			Integer.parseInt(hp);
+			Integer.parseInt(peso);
+		}
+		catch(Exception ex)
+		{
+			mensagem = ex.getMessage();
+		}
+		if(descricao.length() < 10)
+			mensagem = "Sua descrição deve ter acima de 10 letras";
+		
+		return mensagem;
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException

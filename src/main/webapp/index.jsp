@@ -9,11 +9,11 @@
 		<div id="formulario">
 			<form action="JetSkyServlet" method="post">
 				<input type="hidden" name="_id" id="_id" value="${_id}"/>
-				<label>Nome</label>
+				<label>Descrição</label>
 				<input type="text" name="descricao" id="descricao" value="${descricao}"/>
-				<label>Login</label>
+				<label>HP</label>
 				<input type="text" name="hp" id="hp" value="${hp}" />
-				<label>Senha</label>
+				<label>Peso</label>
 				<input type="text" name="peso" id="peso" value="${peso}" />
 				<input type="submit" id="buscar" value="Salvar" />
 			</form>
