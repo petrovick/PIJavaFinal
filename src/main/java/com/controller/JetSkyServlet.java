@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns ={"/login"})
+@WebServlet("/JetSkyServlet")
 public class JetSkyServlet extends HttpServlet
 {
 	/**
