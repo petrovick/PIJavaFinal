@@ -82,11 +82,11 @@
     	<plugin>
 		    <groupId>org.apache.maven.plugins</groupId>
 		    <artifactId>maven-compiler-plugin</artifactId>
-		    <version>3.1</version>
+		    <version>2.0.2</version>
 		    <configuration>
-		        <source>1.7</source>
-		        <target>1.7</target>
-		        <executable>${JAVA_1_7_HOME}/bin/javac</executable>
+		        <source>1.6</source>
+		        <target>1.6</target>
+<!-- 		        <executable>${JAVA_1_7_HOME}/bin/javac</executable> -->
 		        <includes>
 		        	<include>com/controller/*.java</include>
 		        </includes>
