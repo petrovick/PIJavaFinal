@@ -2,13 +2,22 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
-  <servlet>
-        <servlet-name>JetSky</servlet-name>
-        <servlet-class>JetSkyServlet</servlet-class>
-</servlet>
-<servlet-mapping>
-        <servlet-name>JetSky</servlet-name>
-        <url-pattern>/JetSkyServlet</url-pattern>
-</servlet-mapping>
+	<display-name>Archetype Created Web Application</display-name>
+	<servlet>
+		<servlet-name>JetSky</servlet-name>
+		<servlet-class>com.controller.JetSkyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>JetSky</servlet-name>
+		<url-pattern>/JetSkyServlet</url-pattern>
+	</servlet-mapping>
+	
+<!-- 	<servlet> -->
+<!-- 	    <servlet-name>Hello1</servlet-name> -->
+<!-- 	  	<servlet-class>java.reg.pkg.Hello</servlet-class> -->
+<!-- 	</servlet> -->
+<!-- 	<servlet-mapping> -->
+<!-- 	  <servlet-name>Hello1</servlet-name> -->
+<!-- 	  <url-pattern>/hello</url-pattern> -->
+<!-- 	</servlet-mapping> -->
 </web-app>
