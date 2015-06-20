@@ -35,6 +35,12 @@
   <build>
     <finalName>webappRunnerSample</finalName>
     <plugins>
+    	
+        <plugin>
+			<groupId>com.heroku.sdk</groupId>
+			<artifactId>heroku-maven-plugin</artifactId>
+			<version>0.4.3</version>
+		</plugin>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-dependency-plugin</artifactId>
@@ -44,6 +50,7 @@
                     <phase>package</phase>
                     <goals><goal>copy</goal></goals>
                     <configuration>
+                    	<appName>pijavafinal</appName>
                         <artifactItems>
                             <artifactItem>
                                 <groupId>com.github.jsimone</groupId>
