@@ -19,8 +19,7 @@ public class JetSkyServlet extends HttpServlet
 		JetSkiApplication jsa = new JetSkiApplication();
 		JetSki j = new JetSki();
 		String id = request.getParameter("_id");
-		ObjectId obId = new ObjectId(id + "");
-		j.set_id(obId);
+		
 		j.setDescricao(request.getParameter("descricao"));
 		j.setHp(Integer.parseInt(request.getParameter("hp")));
 		j.setPeso(Integer.parseInt(request.getParameter("peso")));
