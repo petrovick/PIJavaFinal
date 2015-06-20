@@ -23,7 +23,7 @@ public class JetSkyServlet extends HttpServlet
 		j.setDescricao(request.getParameter("descricao"));
 		j.setHp(Integer.parseInt(request.getParameter("hp")));
 		j.setPeso(Integer.parseInt(request.getParameter("peso")));
-		String retorno = jsa.Salvar(j);
+		String retorno = jsa.create(j);
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println("<h1>Cervejas</h1><p>" + retorno + "</p>");
