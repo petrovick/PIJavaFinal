@@ -1,8 +1,11 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-<web-app>
-	<display-name>Archetype Created Web Application</display-name>
+<web-app 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+	id="WebApp_ID" 
+	version="2.5">
+  	<display-name>Archetype Created Web Application</display-name>
 	<servlet>
 		<servlet-name>JetSky</servlet-name>
 		<servlet-class>com.controller.JetSkyServlet</servlet-class>
@@ -14,12 +17,16 @@
 	<welcome-file-list>
     	<welcome-file>JetSky</welcome-file>
     </welcome-file-list>
-<!-- 	<servlet> -->
-<!-- 	    <servlet-name>Hello1</servlet-name> -->
-<!-- 	  	<servlet-class>java.reg.pkg.Hello</servlet-class> -->
-<!-- 	</servlet> -->
-<!-- 	<servlet-mapping> -->
-<!-- 	  <servlet-name>Hello1</servlet-name> -->
-<!-- 	  <url-pattern>/hello</url-pattern> -->
-<!-- 	</servlet-mapping> -->
+    
+    <jsp-config>
+	    <jsp-property-group>
+	        <url-pattern>*.jsp</url-pattern>
+	        <scripting-invalid>false</scripting-invalid>
+	    </jsp-property-group>
+	    <jsp-property-group>
+	        <url-pattern>*.tag</url-pattern>                
+	        <scripting-invalid>false</scripting-invalid>
+	    </jsp-property-group>
+	</jsp-config>
 </web-app>
+
