@@ -39,9 +39,13 @@ public class JetSkiServlet extends HttpServlet
 		{
 			List<JetSki> jsl = jsa.todos();
 			request.setAttribute("jetskies", jsl);
-			getServletContext().setAttribute("jetskies", jsl);
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/lista.jsp");
-			rd.forward(request, response);
+//			getServletContext().setAttribute("jetskies", jsl);
+//			RequestDispatcher rd = getServletContext().getRequestDispatcher("/lista.jsp");
+//			rd.forward(request, response);
+
+			response.setContentType("text/html");
+			PrintWriter out = response.getWriter();
+			out.println("<h1>Cervejas</h1><p>" + mensagem + "</p><p> Id:" + id + "<p>" + jsl);
 		}
 	}
 	
