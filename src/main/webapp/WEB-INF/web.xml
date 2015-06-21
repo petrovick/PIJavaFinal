@@ -15,7 +15,7 @@
 		<url-pattern>/JetSkiServlet</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
-    	<welcome-file>JetSki</welcome-file>
+    	<welcome-file>JetSkiServlet</welcome-file>
     </welcome-file-list>
     
     <jsp-config>
