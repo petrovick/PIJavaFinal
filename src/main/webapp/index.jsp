@@ -9,11 +9,11 @@
 		<div id="formulario">
 			<form action="JetSkiServlet" method="post">
 				<input type="hidden" name="_id" id="_id" value="${_id}"/>
-				<label>Altura</label>
+				<label>Descricao</label>
 				<input type="text" name="descricao" id="descricao" value="${descricao}"/>
-				<label>Largura</label>
+				<label>HP</label>
 				<input type="text" name="hp" id="hp" value="${hp}" />
-				<label>Marca</label>
+				<label>Peso</label>
 				<input type="text" name="peso" id="peso" value="${peso}" />
 				<input type="submit" id="buscar" value="Salvar" />
 			</form>
