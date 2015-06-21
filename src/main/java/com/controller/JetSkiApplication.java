@@ -34,7 +34,7 @@ public class JetSkiApplication
     	{
             MongoClientURI uri  = new MongoClientURI("mongodb://petrovick:123@ds043002.mongolab.com:43002/nodepivii"); 
             MongoClient mongo = new MongoClient(uri);
-            DB db = mongo.getDB("nodepivii");
+            DB db = mongo.getDB("nodepivii"); 
 	        DBCollection col = db.getCollection("nodepivii");
 	        
 	        //create user
