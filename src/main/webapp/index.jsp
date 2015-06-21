@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" import="java.util.*"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
-<script src="http://code.jquery.com/jquery-1.11.3.js" type="text/javascript"></script>
+<script src="jquery-1.11.3.js" type="text/javascript"></script>
 <html>
 	<body>
 		<h2>Hello World! teste</h2>
@@ -38,7 +38,8 @@
 					type: "POST",
 					success:function(data)
 					{
-						
+						$('#lista').empty();
+						$('#lista').html(data);
 					}
 				});
 			});
