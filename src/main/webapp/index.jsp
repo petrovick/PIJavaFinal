@@ -5,7 +5,6 @@
 <script src="jquery-1.11.3.js" type="text/javascript"></script>
 <html>
 	<body>
-		<h2>Hello World! teste</h2>
 		<div id="formulario">
 			<form action="JetSkyServlet" name="form" method="post">
 				<input type="hidden" name="_id" id="_id" value="${_id}"/>
@@ -20,30 +19,8 @@
 		</div>
 		
 		<div id="lista">
-			<table>
-				<c:forEach items="${jetskies}" var="jetski">
-					<tr>
-						<td>${jetski.descricao}</td>
-						<td>${jetski.hp}</td>
-					</tr>
-				</c:forEach>
-			</table>
+			<c:import url="lista.jsp"></c:import>
 		</div>
 		
-<!-- 		<script> -->
-// 			$('#buscar').click(function()
-// 			{
-// 				alert('clicou');
-// 				$.ajax({
-// 					url: $('#form').attr("action"),
-// 					type: "POST",
-// 					success:function(data)
-// 					{
-// 						$('#lista').empty();
-// 						$('#lista').html(data);
-// 					}
-// 				});
-// 			});
-<!-- 		</script> -->
 	</body>
 </html>

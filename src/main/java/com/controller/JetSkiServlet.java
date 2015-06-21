@@ -55,17 +55,10 @@ public class JetSkiServlet extends HttpServlet
 	{
 		JetSkiApplication jsa = new JetSkiApplication();
 		List<JetSki> jsl = jsa.todos();
-		RequestDispatcher view = request.getRequestDispatcher("index");
-		request.setAttribute("jetskies", jsl);
-		view.include(request, response);
-		view.forward(request, response);
-		//PrintWriter out = response.getWriter();
-		//out.print(Helper.toArrayString(jsl));
-		//out.flush();
 		
-//		getServletContext().setAttribute("User.Cookie","Tomcat User");
-//      RequestDispatcher rd = getServletContext().getRequestDispatcher("/home.jsp");
-//      rd.forward(request, response);
+		getServletContext().setAttribute("jetskies", jsl);
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+		rd.forward(request, response);
 	}
 	
 	public String validar(String descricao, String hp, String peso)
