@@ -42,7 +42,7 @@ public class JetSkiServlet extends HttpServlet
 		List<JetSki> jsl = jsa.todos();
 		
 		getServletContext().setAttribute("jetskies", jsl);
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/lista.jsp");
 		rd.forward(request, response);
 	}
 	
