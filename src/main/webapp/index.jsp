@@ -19,7 +19,14 @@
 		</div>
 		
 		<div id="lista">
-			<c:import url="lista"></c:import>
+			<table>
+				<c:forEach items="${jetskies}" var="jetski">
+					<tr>
+						<td>${jetski.descricao}</td>
+						<td>${jetski.hp}</td>
+					</tr>
+				</c:forEach>
+			</table>
 		</div>
 		
 		<script>
