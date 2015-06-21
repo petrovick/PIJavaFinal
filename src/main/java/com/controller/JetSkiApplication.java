@@ -72,8 +72,11 @@ public class JetSkiApplication
 	        //read example
 	        DBCursor cursor = col.find();
 	        List<JetSki> jetskies = new ArrayList<JetSki>();
-	        if(cursor.hasNext()){
-	        	JetSki j = Helper.toObject(cursor.next().toString());
+	        while(cursor.hasNext())
+	        {
+	    		Gson gson = new Gson();
+	    		DBObject current = cursor.next();
+	    		JetSki j = gson.fromJson(current.toString(), JetSki.class);
 	            jetskies.add(j);
 	        }
 	        //close resources

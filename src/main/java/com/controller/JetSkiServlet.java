@@ -29,24 +29,10 @@ public class JetSkiServlet extends HttpServlet
 		String mensagem = validar(request.getParameter("descricao"), request.getParameter("hp"), request.getParameter("peso"));
 		if(mensagem == null)
 			mensagem = jsa.create(j);
-		if(mensagem != null)
-		{
-			response.setContentType("text/html");
-			PrintWriter out = response.getWriter();
-			out.println("<h1>Cervejas</h1><p>" + mensagem + "</p><p> Id:" + id + "<p>");
-		}
-		else
-		{
-			List<JetSki> jsl = jsa.todos();
-			request.setAttribute("jetskies", jsl);
-//			getServletContext().setAttribute("jetskies", jsl);
-//			RequestDispatcher rd = getServletContext().getRequestDispatcher("/lista.jsp");
-//			rd.forward(request, response);
-
-			response.setContentType("text/html");
-			PrintWriter out = response.getWriter();
-			out.println("<h1>Cervejas</h1><p>" + mensagem + "</p><p> Id:" + id + "<p>" + jsl);
-		}
+		List<JetSki> jsl = jsa.todos();
+		getServletContext().setAttribute("jetskies", jsl);
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+		rd.forward(request, response);
 	}
 	
 	
