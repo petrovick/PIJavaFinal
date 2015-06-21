@@ -17,7 +17,7 @@ public class JetSkiServlet extends HttpServlet
 {
 	private static final long serialVersionUID = -7321681160776582861L;
 	
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
 		JetSkiApplication jsa = new JetSkiApplication();
 		JetSki j = new JetSki();
@@ -29,9 +29,39 @@ public class JetSkiServlet extends HttpServlet
 		String mensagem = validar(request.getParameter("descricao"), request.getParameter("hp"), request.getParameter("peso"));
 		if(mensagem == null)
 			mensagem = jsa.create(j);
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<h1>Cervejas</h1><p>" + mensagem + "</p><p> Id:" + id + "<p>");
+		if(mensagem != null)
+		{
+			response.setContentType("text/html");
+			PrintWriter out = response.getWriter();
+			out.println("<h1>Cervejas</h1><p>" + mensagem + "</p><p> Id:" + id + "<p>");
+		}
+		else
+		{
+			List<JetSki> jsl = jsa.todos();
+			request.setAttribute("jetskies", jsl);
+			getServletContext().setAttribute("jetskies", jsl);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/lista.jsp");
+			rd.forward(request, response);
+		}
+	}
+	
+	
+	
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+	{
+		JetSkiApplication jsa = new JetSkiApplication();
+		List<JetSki> jsl = jsa.todos();
+		RequestDispatcher view = request.getRequestDispatcher("index");
+		request.setAttribute("jetskies", jsl);
+		view.include(request, response);
+		view.forward(request, response);
+		//PrintWriter out = response.getWriter();
+		//out.print(Helper.toArrayString(jsl));
+		//out.flush();
+		
+//		getServletContext().setAttribute("User.Cookie","Tomcat User");
+//      RequestDispatcher rd = getServletContext().getRequestDispatcher("/home.jsp");
+//      rd.forward(request, response);
 	}
 	
 	public String validar(String descricao, String hp, String peso)
@@ -50,22 +80,5 @@ public class JetSkiServlet extends HttpServlet
 			mensagem = "Sua descrição deve ter acima de 10 letras";
 		
 		return mensagem;
-	}
-	
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-	{
-		JetSkiApplication jsa = new JetSkiApplication();
-		List<JetSki> jsl = jsa.todos();
-		RequestDispatcher view = request.getRequestDispatcher("index");
-		request.setAttribute("jetskies", jsl);
-		view.include(request, response);
-		view.forward(request, response);
-		//PrintWriter out = response.getWriter();
-		//out.print(Helper.toArrayString(jsl));
-		//out.flush();
-		
-//		getServletContext().setAttribute("User.Cookie","Tomcat User");
-//      RequestDispatcher rd = getServletContext().getRequestDispatcher("/home.jsp");
-//      rd.forward(request, response);
 	}
 }
