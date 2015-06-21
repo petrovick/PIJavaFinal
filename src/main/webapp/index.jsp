@@ -31,8 +31,9 @@
 		</div>
 		
 		<script>
-			$('#form').on("click", function()
+			$('#buscar').click(function()
 			{
+				alert('clicou');
 				$.ajax({
 					url: $('#form').attr("action"),
 					type: "POST",
