@@ -36,7 +36,6 @@ public class JetSkiServlet extends HttpServlet
 	}
 	
 	
-	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
 		JetSkiApplication jsa = new JetSkiApplication();
