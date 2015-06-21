@@ -6,7 +6,7 @@
 <html>
 	<body>
 		<div id="formulario">
-			<form action="JetSkyServlet" name="form" method="post">
+			<form action="JetSkiServlet" name="form" method="post">
 				<input type="hidden" name="_id" id="_id" value="${_id}"/>
 				<label>Descrição</label>
 				<input type="text" name="descricao" id="descricao" value="${descricao}"/>
