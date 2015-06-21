@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.bson.types.ObjectId;
 
-@WebServlet("/JetSkyServlet")
+@WebServlet("/JetSkiServlet")
 public class JetSkiServlet extends HttpServlet
 {
 	private static final long serialVersionUID = -7321681160776582861L;

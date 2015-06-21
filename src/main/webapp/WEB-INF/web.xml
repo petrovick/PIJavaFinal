@@ -7,15 +7,15 @@
 	version="2.5">
   	<display-name>Archetype Created Web Application</display-name>
 	<servlet>
-		<servlet-name>JetSky</servlet-name>
-		<servlet-class>com.controller.JetSkyServlet</servlet-class>
+		<servlet-name>JetSki</servlet-name>
+		<servlet-class>com.controller.JetSkiServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>JetSky</servlet-name>
-		<url-pattern>/JetSkyServlet</url-pattern>
+		<servlet-name>JetSki</servlet-name>
+		<url-pattern>/JetSkiServlet</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
-    	<welcome-file>JetSky</welcome-file>
+    	<welcome-file>JetSki</welcome-file>
     </welcome-file-list>
     
     <jsp-config>
