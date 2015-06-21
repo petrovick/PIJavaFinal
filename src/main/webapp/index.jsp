@@ -15,7 +15,7 @@
 				<input type="text" name="hp" id="hp" value="${hp}" />
 				<label>Peso</label>
 				<input type="text" name="peso" id="peso" value="${peso}" />
-				<input type="button" id="buscar" value="Salvar" />
+				<input type="submit" id="buscar" value="Salvar" />
 			</form>
 		</div>
 		
@@ -30,20 +30,20 @@
 			</table>
 		</div>
 		
-		<script>
-			$('#buscar').click(function()
-			{
-				alert('clicou');
-				$.ajax({
-					url: $('#form').attr("action"),
-					type: "POST",
-					success:function(data)
-					{
-						$('#lista').empty();
-						$('#lista').html(data);
-					}
-				});
-			});
-		</script>
+<!-- 		<script> -->
+// 			$('#buscar').click(function()
+// 			{
+// 				alert('clicou');
+// 				$.ajax({
+// 					url: $('#form').attr("action"),
+// 					type: "POST",
+// 					success:function(data)
+// 					{
+// 						$('#lista').empty();
+// 						$('#lista').html(data);
+// 					}
+// 				});
+// 			});
+<!-- 		</script> -->
 	</body>
 </html>
