@@ -31,7 +31,7 @@ public class JetSkiServlet extends HttpServlet
 			mensagem = jsa.create(j);
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		out.println("<h1>Cervejas</h1><p>" + mensagem + "</p>");
+		out.println("<h1>Cervejas</h1><p>" + mensagem + "</p><p> Id:" + id + "<p>");
 	}
 	
 	public String validar(String descricao, String hp, String peso)
@@ -63,5 +63,9 @@ public class JetSkiServlet extends HttpServlet
 		//PrintWriter out = response.getWriter();
 		//out.print(Helper.toArrayString(jsl));
 		//out.flush();
+		
+//		getServletContext().setAttribute("User.Cookie","Tomcat User");
+//      RequestDispatcher rd = getServletContext().getRequestDispatcher("/home.jsp");
+//      rd.forward(request, response);
 	}
 }
