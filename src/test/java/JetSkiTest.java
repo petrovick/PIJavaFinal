@@ -25,5 +25,14 @@ public class JetSkiTest
 		assertEquals("São Iguais", erroRetornado, null);
 	}
 	
+	@Test
+	public void testApplicationValidar()
+	{
+		JetSkiApplication sa = new JetSkiApplication();
+		JetSki j = new JetSki(null, "DesctestCriouNovo", 1, 1);
+		String erroRetornado = sa.validar(j.getDescricao(), j.getHp() + "", j.getPeso() + "");
+		assertEquals("São Iguais", erroRetornado, null);
+	}
+	
 	
 }

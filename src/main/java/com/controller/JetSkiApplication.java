@@ -32,7 +32,7 @@ public class JetSkiApplication
     	String mensagem = null;
     	try
     	{
-            MongoClientURI uri  = new MongoClientURI("mongodb://petrovick:123@ds043002.mongolab.com:43002/nodepivii"); 
+            MongoClientURI uri  = new MongoClientURI("mongodb://petrovick:senha123@ds043002.mongolab.com:43002/nodepivii"); 
             MongoClient mongo = new MongoClient(uri);
             DB db = mongo.getDB("nodepivii"); 
 	        DBCollection col = db.getCollection("nodepivii");
@@ -61,31 +61,42 @@ public class JetSkiApplication
     	return mensagem;
     }
 	
-	public List<JetSki> todos()
+	public List<JetSki> todos() throws Exception
     {
-    	try
-    	{
-            MongoClientURI uri  = new MongoClientURI("mongodb://petrovick:123@ds043002.mongolab.com:43002/nodepivii"); 
-            MongoClient mongo = new MongoClient(uri);
-            DB db = mongo.getDB("nodepivii");
-	        DBCollection col = db.getCollection("nodepivii");
-	        //read example
-	        DBCursor cursor = col.find();
-	        List<JetSki> jetskies = new ArrayList<JetSki>();
-	        while(cursor.hasNext())
-	        {
-	    		Gson gson = new Gson();
-	    		DBObject current = cursor.next();
-	    		JetSki j = gson.fromJson(current.toString(), JetSki.class);
-	            jetskies.add(j);
-	        }
-	        //close resources
-	        mongo.close();
-	    	return jetskies;
-    	}
-    	catch(Exception ex)
-    	{
-    		return null;
-    	}
+	    MongoClientURI uri  = new MongoClientURI("mongodb://petrovick:senha123@ds043002.mongolab.com:43002/nodepivii"); 
+        MongoClient mongo = new MongoClient(uri);
+        DB db = mongo.getDB("nodepivii");
+        DBCollection col = db.getCollection("nodepivii");
+        //read example
+        DBCursor cursor = col.find();
+        List<JetSki> jetskies = new ArrayList<JetSki>();
+        while(cursor.hasNext())
+        {
+    		Gson gson = new Gson();
+    		DBObject current = cursor.next();
+    		JetSki j = gson.fromJson(current.toString(), JetSki.class);
+            jetskies.add(j);
+        }
+        //close resources
+        mongo.close();
+    	return jetskies;
     }
+	
+	public String validar(String descricao, String hp, String peso)
+	{
+		String mensagem = null;
+		try
+		{
+			Integer.parseInt(hp);
+			Integer.parseInt(peso);
+		}
+		catch(Exception ex)
+		{
+			mensagem = ex.getMessage();
+		}
+		if(descricao.length() < 10)
+			mensagem = "Sua descrição deve ter acima de 10 letras";
+		
+		return mensagem;
+	}
 }

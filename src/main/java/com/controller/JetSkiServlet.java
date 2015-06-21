@@ -1,6 +1,8 @@
 package com.controller;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,10 +24,18 @@ public class JetSkiServlet extends HttpServlet
 		j.setDescricao(request.getParameter("descricao"));
 		j.setHp(Integer.parseInt(request.getParameter("hp")));
 		j.setPeso(Integer.parseInt(request.getParameter("peso")));
-		String mensagem = validar(request.getParameter("descricao"), request.getParameter("hp"), request.getParameter("peso"));
+		String mensagem = jsa.validar(request.getParameter("descricao"), request.getParameter("hp"), request.getParameter("peso"));
 		if(mensagem == null)
 			mensagem = jsa.create(j);
-		List<JetSki> jsl = jsa.todos();
+		List<JetSki> jsl = new ArrayList<JetSki>();
+		try
+		{
+			jsl = jsa.todos();
+		}
+		catch(Exception ex)
+		{
+			mensagem = ex.getMessage();
+		}
 		getServletContext().setAttribute("jetskies", jsl);
 		getServletContext().setAttribute("mensagem", mensagem);
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
@@ -36,28 +46,20 @@ public class JetSkiServlet extends HttpServlet
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
 		JetSkiApplication jsa = new JetSkiApplication();
-		List<JetSki> jsl = jsa.todos();
-		
-		getServletContext().setAttribute("jetskies", jsl);
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-		rd.forward(request, response);
-	}
-	
-	public String validar(String descricao, String hp, String peso)
-	{
-		String mensagem = null;
+		List<JetSki> jsl = new ArrayList<JetSki>();
+		String mensagem = "";
 		try
 		{
-			Integer.parseInt(hp);
-			Integer.parseInt(peso);
+			jsl = jsa.todos();
 		}
 		catch(Exception ex)
 		{
 			mensagem = ex.getMessage();
 		}
-		if(descricao.length() < 10)
-			mensagem = "Sua descrição deve ter acima de 10 letras";
-		
-		return mensagem;
+		getServletContext().setAttribute("jetskies", jsl);
+		getServletContext().setAttribute("mensagem", mensagem);
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+		rd.forward(request, response);
 	}
+	
 }
