@@ -20,13 +20,6 @@ import com.mongodb.WriteResult;
 import com.mongodb.util.JSON;
 public class JetSkiApplication
 {
-	public String Salvar(JetSki j)
-	{
-		String mensagem = "Salvo!";
-		
-		return mensagem;
-	}
-	
 	public String create(JetSki j)
     {
     	String mensagem = null;
