@@ -1,7 +1,10 @@
 package com.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +16,7 @@ import org.bson.types.ObjectId;
 public class JetSkiServlet extends HttpServlet
 {
 	private static final long serialVersionUID = -7321681160776582861L;
-
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException
 	{
 		JetSkiApplication jsa = new JetSkiApplication();
@@ -48,12 +51,17 @@ public class JetSkiServlet extends HttpServlet
 		
 		return mensagem;
 	}
-
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException
-	{
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<h1>Refrigerante</h1>");
-	}
 	
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+	{
+		JetSkiApplication jsa = new JetSkiApplication();
+		List<JetSki> jsl = jsa.todos();
+		RequestDispatcher view = request.getRequestDispatcher("index");
+		request.setAttribute("jetskies", jsl);
+		view.include(request, response);
+		view.forward(request, response);
+		//PrintWriter out = response.getWriter();
+		//out.print(Helper.toArrayString(jsl));
+		//out.flush();
+	}
 }

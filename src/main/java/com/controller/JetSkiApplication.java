@@ -1,4 +1,7 @@
 package com.controller;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bson.types.ObjectId;
 
 import com.google.gson.Gson;
@@ -56,5 +59,30 @@ public class JetSkiApplication
     		mensagem = ex.getMessage();
     	}
     	return mensagem;
+    }
+	
+	public List<JetSki> todos()
+    {
+    	try
+    	{
+            MongoClientURI uri  = new MongoClientURI("mongodb://petrovick:123@ds043002.mongolab.com:43002/nodepivii"); 
+            MongoClient mongo = new MongoClient(uri);
+            DB db = mongo.getDB("nodepivii");
+	        DBCollection col = db.getCollection("nodepivii");
+	        //read example
+	        DBCursor cursor = col.find();
+	        List<JetSki> jetskies = new ArrayList<JetSki>();
+	        if(cursor.hasNext()){
+	        	JetSki j = Helper.toObject(cursor.next().toString());
+	            jetskies.add(j);
+	        }
+	        //close resources
+	        mongo.close();
+	    	return jetskies;
+    	}
+    	catch(Exception ex)
+    	{
+    		return null;
+    	}
     }
 }

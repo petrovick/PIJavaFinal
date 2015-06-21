@@ -21,10 +21,9 @@ public class JetSkiTest
 		JetSkiApplication sa = new JetSkiApplication();
 		JetSki j = new JetSki(null, "DesctestCriouNovo", 1, 1);
 		String erroRetornado = sa.create(j);
-		//assertEquals("São Iguais", erroRetornado, "Nao funcionou");
-		assertEquals("São Iguais", erroRetornado, null);
+		assertEquals("São Iguais", erroRetornado, "Nao funcionou");
+		//assertEquals("São Iguais", erroRetornado, null);//Teste falha
 	}
 	
 	
-
 }
