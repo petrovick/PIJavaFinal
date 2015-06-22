@@ -92,7 +92,7 @@ public class JetSkiApplication
 		{
 			mensagem.append(ex.getMessage());
 		}
-		if(mensagem != null && !mensagem.toString().equals(""))
+		if(mensagem == null || !mensagem.toString().equals(""))
 			return false;
 		return true;
 	}

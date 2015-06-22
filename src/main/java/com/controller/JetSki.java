@@ -39,5 +39,11 @@ public class JetSki {
 	public void setPeso(Integer peso) {
 		this.peso = peso;
 	}
+	@Override
+	public String toString() {
+		return "JetSki [_id=" + _id + ", descricao=" + descricao + ", hp=" + hp
+				+ ", peso=" + peso + "]";
+	}
+	
 	
 }

@@ -106,7 +106,9 @@ public class JetSkiTest
 	{
 		JetSkiApplication sa = new JetSkiApplication();
 		JetSki j = new JetSki(null, "DesctestCriouNovo", 1, 1);
-		boolean valido = sa.validar(j.getDescricao(), j.getHp() + "", j.getPeso() + "", new StringBuffer());
+		StringBuffer sb = new StringBuffer();
+		boolean valido = sa.validar(j.getDescricao(), j.getHp() + "", j.getPeso() + "", sb);
+		System.out.println("testApplicationValidar:sb:" + sb + "-");
 		assertEquals("São Iguais", valido, true);
 	}
 	
@@ -116,6 +118,7 @@ public class JetSkiTest
 		JetSkiApplication sa = new JetSkiApplication();
 		JetSki j = new JetSki(null, "123456789", 1, 1);
 		boolean valido = sa.validar(j.getDescricao(), j.getHp() + "", j.getPeso() + "", new StringBuffer());
+		System.out.println("testApplicationValidarMenosDe10Caracteres:valido:" + valido + "-" + j);
 		assertEquals("São Iguais", valido, false);
 	}
 	
@@ -124,7 +127,7 @@ public class JetSkiTest
 	{
 		JetSkiApplication sa = new JetSkiApplication();
 		boolean valido = sa.validar("12345678901", "abc", "def", new StringBuffer());
-		assertNotEquals("São Iguais", valido, true);
+		assertEquals("São Iguais", valido, false);
 	}
 	
 	@Test
