@@ -83,6 +83,10 @@ public class JetSkiApplication
 			mensagem.append("HP está vazio.");
 		if(peso == null || peso.equals(""))
 			mensagem.append("Peso está vazio.");
+		if(hp != null && !hp.matches("-?\\d+(\\.\\d+)?"))
+			mensagem.append("HP deve ser um número.");
+		if(peso != null && !peso.matches("-?\\d+(\\.\\d+)?"))
+			mensagem.append("Peso deve ser um número.");
 //		try
 //		{
 //			Integer.parseInt(hp);

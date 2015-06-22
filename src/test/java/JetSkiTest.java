@@ -63,7 +63,7 @@ public class JetSkiTest
 		JetSkiApplication application = new JetSkiApplication();
 		StringBuffer sb = new StringBuffer();
 		application.validar("maiorque10", "", "1", sb);
-		assertEquals(sb.toString(), "HP está vazio.");
+		assertEquals(sb.toString(), "HP está vazio.HP deve ser um número.");
 	}
 	
 	@Test
@@ -81,7 +81,7 @@ public class JetSkiTest
 		JetSkiApplication application = new JetSkiApplication();
 		StringBuffer sb = new StringBuffer();
 		application.validar("maiorque10", "1", "", sb);
-		assertEquals(sb.toString(), "Peso está vazio.");
+		assertEquals(sb.toString(), "Peso está vazio.Peso deve ser um número.");
 	}
 	
 	@Test
