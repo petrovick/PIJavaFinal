@@ -77,11 +77,11 @@ public class JetSkiApplication
 	
 	public boolean validar(String descricao, String hp, String peso, StringBuffer mensagem)
 	{
-		if(descricao.equals(""))
-			mensagem.append("Descrição está vazio.");
-		if(hp.equals(""))
+		if(descricao == null || descricao.equals("") || descricao.length() < 10)
+			mensagem.append("Descrição está vazio ou menor que 10 caracteres.");
+		if(hp == null || hp.equals(""))
 			mensagem.append("HP está vazio.");
-		if(peso.equals(""))
+		if(peso == null || peso.equals(""))
 			mensagem.append("Peso está vazio.");
 		try
 		{
@@ -92,8 +92,6 @@ public class JetSkiApplication
 		{
 			mensagem.append(ex.getMessage());
 		}
-		if(descricao.length() < 10)
-			mensagem.append("Sua descrição deve ter acima de 10 letras");
 		if(mensagem != null && !mensagem.toString().equals(""))
 			return false;
 		return true;

@@ -1,8 +1,12 @@
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+import static org.mockito.Mockito.*;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponseWrapper;
 
 import org.bson.types.ObjectId;
 import org.junit.Test;
@@ -14,6 +18,72 @@ import com.controller.*;
 
 public class JetSkiTest
 {
+	
+	@Test
+	public void testDescricaoNullEntaoRetornaMensagemDeErro()
+	{
+		JetSkiApplication application = new JetSkiApplication();
+		StringBuffer sb = new StringBuffer();
+		application.validar(null, "1", "1", sb);
+		assertEquals(sb.toString(), "Descrição está vazio ou menor que 10 caracteres.");
+	}
+	
+	@Test
+	public void testDescricaoVazioEntaoRetornaMensagemDeErro()
+	{
+		JetSkiApplication application = new JetSkiApplication();
+		StringBuffer sb = new StringBuffer();
+		application.validar("", "1", "1", sb);
+		assertEquals(sb.toString(), "Descrição está vazio ou menor que 10 caracteres.");
+	}
+	
+	@Test
+	public void testDescricaoMenorQue10CaracteresEntaoRetornaMensagemDeErro()
+	{
+		JetSkiApplication application = new JetSkiApplication();
+		StringBuffer sb = new StringBuffer();
+		application.validar("menosq10", "1", "1", sb);
+		assertEquals(sb.toString(), "Descrição está vazio ou menor que 10 caracteres.");
+	}
+	
+	@Test
+	public void testHPNullEntaoRetornaMensagemDeErro()
+	{
+		JetSkiApplication application = new JetSkiApplication();
+		StringBuffer sb = new StringBuffer();
+		application.validar("BemMaiorque10", null, "1123", sb);
+		System.out.println("sb.toString()"+sb.toString());
+		StringBuffer sba = new StringBuffer("HP está vazio.null");
+		assertEquals(sb.toString(), sba.toString());
+	}
+	
+	@Test
+	public void testHPVazioEntaoRetornaMensagemDeErro()
+	{
+		JetSkiApplication application = new JetSkiApplication();
+		StringBuffer sb = new StringBuffer();
+		application.validar("maiorque10", "", "1", sb);
+		assertEquals(sb.toString(), "HP está vazio.For input string: \"\"");
+	}
+	
+	@Test
+	public void testPesoNullEntaoRetornaMensagemDeErro()
+	{
+		JetSkiApplication application = new JetSkiApplication();
+		StringBuffer sb = new StringBuffer();
+		application.validar("maiorque10", "1", null, sb);
+		assertEquals(sb.toString(), "Peso está vazio.null");
+	}
+	
+	@Test
+	public void testPesoVazioEntaoRetornaMensagemDeErro()
+	{
+		JetSkiApplication application = new JetSkiApplication();
+		StringBuffer sb = new StringBuffer();
+		application.validar("maiorque10", "1", "", sb);
+		assertEquals(sb.toString(), "Peso está vazio.For input string: \"\"");
+	}
+	
 	@Test
 	public void testCriouNovo() {
 		JetSkiApplication sa = new JetSkiApplication();
@@ -23,7 +93,7 @@ public class JetSkiTest
 			int totalAntes = sa.todos().size();
 			String erroRetornado = sa.create(j);
 			int totalDepois = sa.todos().size();
-			assertEquals("São Iguais", totalAntes, totalDepois);
+			assertEquals("São Iguais", totalAntes + 1, totalDepois);
 		}
 		catch (Exception e)
 		{
@@ -46,7 +116,7 @@ public class JetSkiTest
 		JetSkiApplication sa = new JetSkiApplication();
 		JetSki j = new JetSki(null, "123456789", 1, 1);
 		boolean valido = sa.validar(j.getDescricao(), j.getHp() + "", j.getPeso() + "", new StringBuffer());
-		assertEquals("São Iguais", valido, true);
+		assertEquals("São Iguais", valido, false);
 	}
 	
 	@Test
@@ -66,7 +136,8 @@ public class JetSkiTest
 		j.setHp(1);
 		j.setPeso(1);
 		String erroRetornado = sa.create(j);
-		assertNotEquals("São Iguais", erroRetornado, null);
+		System.out.println("erroRetornado:" + erroRetornado);
+		assertEquals("São Iguais", erroRetornado, null);
 	}
 	
 
@@ -101,6 +172,28 @@ public class JetSkiTest
 			System.out.println("Mensagem:" + mensagem);
 		}
 		assertNotSame("São Iguais", lista.size(), 0);
+	}
+	
+	@Test
+	public void testPreencheDoPostEDoGet()
+	{
+		JetSkiServlet js = new JetSkiServlet();
+		String mensagem = null;
+		HttpServletRequest request = mock(HttpServletRequest.class);       
+        HttpServletResponse response = mock(HttpServletResponse.class);
+        try {
+			js.doPost(request, response);
+			js.doGet(request, response);
+		} catch (IOException e) {
+			mensagem = e.getMessage();
+		} catch (ServletException e) {
+			mensagem = e.getMessage();
+		}
+        catch(Exception e) {
+			mensagem = e.getMessage();
+		}
+        
+		assertNotEquals(mensagem, null);
 	}
 	
 //	@Test
