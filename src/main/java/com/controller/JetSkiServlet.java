@@ -18,15 +18,18 @@ public class JetSkiServlet extends HttpServlet
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
 		JetSkiApplication jsa = new JetSkiApplication();
+		StringBuffer mensagem = new StringBuffer();
+		boolean valido = jsa.validar(request.getParameter("descricao"), request.getParameter("hp"), request.getParameter("peso"), mensagem);
 		JetSki j = new JetSki();
-		String id = request.getParameter("_id");
-		
-		j.setDescricao(request.getParameter("descricao"));
-		j.setHp(Integer.parseInt(request.getParameter("hp")));
-		j.setPeso(Integer.parseInt(request.getParameter("peso")));
-		String mensagem = jsa.validar(request.getParameter("descricao"), request.getParameter("hp"), request.getParameter("peso"));
-		if(mensagem == null)
-			mensagem = jsa.create(j);
+		if(valido)
+		{
+			String id = request.getParameter("_id");
+			j.setDescricao(request.getParameter("descricao"));
+			j.setHp(Integer.parseInt(request.getParameter("hp")));
+			j.setPeso(Integer.parseInt(request.getParameter("peso")));
+			if(mensagem == null)
+				mensagem.append(jsa.create(j));
+		}
 		List<JetSki> jsl = new ArrayList<JetSki>();
 		try
 		{
@@ -34,7 +37,7 @@ public class JetSkiServlet extends HttpServlet
 		}
 		catch(Exception ex)
 		{
-			mensagem = ex.getMessage();
+			mensagem.append(ex.getMessage());
 		}
 		getServletContext().setAttribute("jetskies", jsl);
 		getServletContext().setAttribute("mensagem", mensagem);

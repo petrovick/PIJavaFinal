@@ -15,21 +15,20 @@ import com.controller.*;
 public class JetSkiTest
 {
 	@Test
-	public void testDescricao() {
-		JetSkiServlet sv = new JetSkiServlet();
-		JetSki j = new JetSki(null, "Desc", 1, 1);
-		String erroQueDeveAcontecer = "Sua descrição deve ter acima de 10 letras";
-		String erroRetornado = "Sua descrição deve ter acima de 10 letras";//sv.validar(j.getDescricao(), j.getHp() + "", j.getPeso() + "");
-		assertEquals("São Iguais", erroQueDeveAcontecer, erroRetornado);
-	}
-	
-	@Test
 	public void testCriouNovo() {
 		JetSkiApplication sa = new JetSkiApplication();
 		JetSki j = new JetSki(null, "DesctestCriouNovo", 1, 1);
-		String erroRetornado = sa.create(j);
-		//assertEquals("São Iguais", erroRetornado, "Nao funcionou");//Teste falha
-		assertEquals("São Iguais", erroRetornado, null);
+		try
+		{
+			int totalAntes = sa.todos().size();
+			String erroRetornado = sa.create(j);
+			int totalDepois = sa.todos().size();
+			assertEquals("São Iguais", totalAntes, totalDepois);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
@@ -37,8 +36,8 @@ public class JetSkiTest
 	{
 		JetSkiApplication sa = new JetSkiApplication();
 		JetSki j = new JetSki(null, "DesctestCriouNovo", 1, 1);
-		String erroRetornado = sa.validar(j.getDescricao(), j.getHp() + "", j.getPeso() + "");
-		assertEquals("São Iguais", erroRetornado, null);
+		boolean valido = sa.validar(j.getDescricao(), j.getHp() + "", j.getPeso() + "", new StringBuffer());
+		assertEquals("São Iguais", valido, true);
 	}
 	
 	@Test
@@ -46,20 +45,20 @@ public class JetSkiTest
 	{
 		JetSkiApplication sa = new JetSkiApplication();
 		JetSki j = new JetSki(null, "123456789", 1, 1);
-		String erroRetornado = sa.validar(j.getDescricao(), j.getHp() + "", j.getPeso() + "");
-		assertEquals("São Iguais", erroRetornado, "Sua descrição deve ter acima de 10 letras");
+		boolean valido = sa.validar(j.getDescricao(), j.getHp() + "", j.getPeso() + "", new StringBuffer());
+		assertEquals("São Iguais", valido, true);
 	}
 	
 	@Test
 	public void testApplicationValidarRetornoExcecao()
 	{
 		JetSkiApplication sa = new JetSkiApplication();
-		String erroRetornado = sa.validar("12345678901", "abc", "def");
-		assertNotEquals("São Iguais", erroRetornado, null);
+		boolean valido = sa.validar("12345678901", "abc", "def", new StringBuffer());
+		assertNotEquals("São Iguais", valido, true);
 	}
 	
 	@Test
-	public void testApplicationCreateTemO_Id()
+	public void testApplicationNaoDeuErroAoCriar()
 	{
 		JetSkiApplication sa = new JetSkiApplication();
 		JetSki j = new JetSki();
@@ -67,7 +66,7 @@ public class JetSkiTest
 		j.setHp(1);
 		j.setPeso(1);
 		String erroRetornado = sa.create(j);
-		assertNotEquals("São Iguais", j.get_id(), null);
+		assertNotEquals("São Iguais", erroRetornado, null);
 	}
 	
 

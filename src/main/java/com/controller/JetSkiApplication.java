@@ -75,9 +75,14 @@ public class JetSkiApplication
     	return jetskies;
     }
 	
-	public String validar(String descricao, String hp, String peso)
+	public boolean validar(String descricao, String hp, String peso, StringBuffer mensagem)
 	{
-		String mensagem = null;
+		if(descricao.equals(""))
+			mensagem.append("Descrição está vazio.");
+		if(hp.equals(""))
+			mensagem.append("HP está vazio.");
+		if(peso.equals(""))
+			mensagem.append("Peso está vazio.");
 		try
 		{
 			Integer.parseInt(hp);
@@ -85,11 +90,13 @@ public class JetSkiApplication
 		}
 		catch(Exception ex)
 		{
-			mensagem = ex.getMessage();
+			mensagem.append(ex.getMessage());
 		}
 		if(descricao.length() < 10)
-			mensagem = "Sua descrição deve ter acima de 10 letras";
-		
-		return mensagem;
+			mensagem.append("Sua descrição deve ter acima de 10 letras");
+		if(mensagem != null && !mensagem.toString().equals(""))
+			return false;
+		return true;
 	}
 }
+
