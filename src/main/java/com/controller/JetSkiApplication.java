@@ -22,7 +22,7 @@ public class JetSkiApplication
 {
 	public String create(JetSki j)
     {
-    	String mensagem = null;
+    	String mensagem = "";
     	try
     	{
             MongoClientURI uri  = new MongoClientURI("mongodb://petrovick:senha123@ds043002.mongolab.com:43002/nodepivii"); 
@@ -83,18 +83,19 @@ public class JetSkiApplication
 			mensagem.append("HP está vazio.");
 		if(peso == null || peso.equals(""))
 			mensagem.append("Peso está vazio.");
-		try
-		{
-			Integer.parseInt(hp);
-			Integer.parseInt(peso);
-		}
-		catch(Exception ex)
-		{
-			mensagem.append(ex.getMessage());
-		}
-		if(mensagem == null || !mensagem.toString().equals(""))
-			return false;
-		return true;
+//		try
+//		{
+//			Integer.parseInt(hp);
+//			Integer.parseInt(peso);
+//		}
+//		catch(Exception ex)
+//		{
+//			System.out.println("Entrou no exception do validar!!!" + ex);
+//			mensagem.append(ex.getMessage());
+//		}
+		if(mensagem.toString().isEmpty())
+			return true;
+		return false;
 	}
 }
 

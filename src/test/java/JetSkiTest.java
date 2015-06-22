@@ -53,7 +53,7 @@ public class JetSkiTest
 		StringBuffer sb = new StringBuffer();
 		application.validar("BemMaiorque10", null, "1123", sb);
 		System.out.println("sb.toString()"+sb.toString());
-		StringBuffer sba = new StringBuffer("HP está vazio.null");
+		StringBuffer sba = new StringBuffer("HP está vazio.");
 		assertEquals(sb.toString(), sba.toString());
 	}
 	
@@ -63,7 +63,7 @@ public class JetSkiTest
 		JetSkiApplication application = new JetSkiApplication();
 		StringBuffer sb = new StringBuffer();
 		application.validar("maiorque10", "", "1", sb);
-		assertEquals(sb.toString(), "HP está vazio.For input string: \"\"");
+		assertEquals(sb.toString(), "HP está vazio.");
 	}
 	
 	@Test
@@ -72,7 +72,7 @@ public class JetSkiTest
 		JetSkiApplication application = new JetSkiApplication();
 		StringBuffer sb = new StringBuffer();
 		application.validar("maiorque10", "1", null, sb);
-		assertEquals(sb.toString(), "Peso está vazio.null");
+		assertEquals(sb.toString(), "Peso está vazio.");
 	}
 	
 	@Test
@@ -81,7 +81,7 @@ public class JetSkiTest
 		JetSkiApplication application = new JetSkiApplication();
 		StringBuffer sb = new StringBuffer();
 		application.validar("maiorque10", "1", "", sb);
-		assertEquals(sb.toString(), "Peso está vazio.For input string: \"\"");
+		assertEquals(sb.toString(), "Peso está vazio.");
 	}
 	
 	@Test
@@ -122,13 +122,13 @@ public class JetSkiTest
 		assertEquals("São Iguais", valido, false);
 	}
 	
-	@Test
-	public void testApplicationValidarRetornoExcecao()
-	{
-		JetSkiApplication sa = new JetSkiApplication();
-		boolean valido = sa.validar("12345678901", "abc", "def", new StringBuffer());
-		assertEquals("São Iguais", valido, false);
-	}
+//	@Test
+//	public void testApplicationValidarRetornoExcecao()
+//	{
+//		JetSkiApplication sa = new JetSkiApplication();
+//		boolean valido = sa.validar("12345678901", "abc", "def", new StringBuffer());
+//		assertEquals("São Iguais", valido, false);
+//	}
 	
 	@Test
 	public void testApplicationNaoDeuErroAoCriar()
@@ -138,9 +138,11 @@ public class JetSkiTest
 		j.setDescricao("DesctestCriouNovo");
 		j.setHp(1);
 		j.setPeso(1);
-		String erroRetornado = sa.create(j);
-		System.out.println("erroRetornado:" + erroRetornado);
-		assertEquals("São Iguais", erroRetornado, null);
+		StringBuffer sb = new StringBuffer();
+		sa.validar(j.getDescricao(), j.getHp() + "", j.getPeso() + "", sb);
+		sb.append(sa.create(j));
+		System.out.println("erroRetornado:" + sb);
+		assertEquals("São Iguais", sb.toString(), "");
 	}
 	
 
@@ -153,8 +155,10 @@ public class JetSkiTest
 		j.setDescricao("DesctestCriouNovo");
 		j.setHp(1);
 		j.setPeso(1);
-		String erroRetornado = sa.create(j);
-		assertEquals("São Iguais", erroRetornado, null);
+		StringBuffer sb = new StringBuffer();
+		sa.validar(j.getDescricao(), j.getHp() + "", j.getPeso() + "", sb);
+		sb.append(sa.create(j));
+		assertEquals("Criou jetsky sem falhar.", sb.toString(), "");
 	}
 	
 	@Test
