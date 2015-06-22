@@ -27,7 +27,7 @@ public class JetSkiServlet extends HttpServlet
 			j.setDescricao(request.getParameter("descricao"));
 			j.setHp(Integer.parseInt(request.getParameter("hp")));
 			j.setPeso(Integer.parseInt(request.getParameter("peso")));
-			if(mensagem == null)
+			if(mensagem.toString().equals(""))
 				mensagem.append(jsa.create(j));
 		}
 		List<JetSki> jsl = new ArrayList<JetSki>();
