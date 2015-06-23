@@ -7,6 +7,11 @@
 <script type="text/javascript" src="jquery-1.11.3.js" ></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js" ></script>
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js" ></script>
+    
+    
+
 
 <html>
 	<head>
@@ -18,18 +23,18 @@
 			<form action="JetSkiServlet" method="post">
 				<input class="form-control"  type="hidden" name="_id" id="_id" value="${_id}"/>
 				<div class="input-group">
-					<input class="form-control" type="text" name="descricao" id="descricao" value="${descricao}" aria-describedby="basic-addon2"/>
 					<span class="input-group-addon" id="basic-addon2">Descrição</span>
+					<input class="form-control" type="text" name="descricao" id="descricao" value="${descricao}" aria-describedby="basic-addon2"/>
 				</div>
 				
 				<div class="input-group">
-					<input class="form-control" type="text" name="hp" id="hp" value="${hp}" aria-describedby="basic-addon2"/>
 					<span class="input-group-addon" id="basic-addon2">HP</span>
+					<input class="form-control" type="text" name="hp" id="hp" value="${hp}" aria-describedby="basic-addon2"/>
 				</div>
 				
 				<div class="input-group">
-					<input class="form-control" type="text" name="peso" id="peso" value="${peso}" aria-describedby="basic-addon2"/>
 					<span class="input-group-addon" id="basic-addon2">Peso</span>
+					<input class="form-control" type="text" name="peso" id="peso" value="${peso}" aria-describedby="basic-addon2"/>
 				</div>
 				
 				<input class="btn btn-success" type="submit" id="buscar" value="Salvar" />
@@ -57,5 +62,12 @@
 				</table>
 			</div>
 		</div>
+		<script>
+			$(document).ready(function() {
+			    $('#tabela').dataTable( {
+			        "pagingType": "full_numbers"
+			    } );
+			} );
+		</script>
 	</body>
 </html>
