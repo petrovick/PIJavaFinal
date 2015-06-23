@@ -17,34 +17,45 @@
 		<div id="formulario">
 			<form action="JetSkiServlet" method="post">
 				<input class="form-control"  type="hidden" name="_id" id="_id" value="${_id}"/>
-				<label>Descricao</label>
-				<input class="form-control" type="text" name="descricao" id="descricao" value="${descricao}"/>
-				<label>HP</label>
-				<input class="form-control" type="text" name="hp" id="hp" value="${hp}" />
-				<label>Peso</label>
-				<input class="form-control" type="text" name="peso" id="peso" value="${peso}" />
-				<input type="submit" id="buscar" value="Salvar" />
+				<div class="input-group">
+					<input class="form-control" type="text" name="descricao" id="descricao" value="${descricao}" aria-describedby="basic-addon2"/>
+					<span class="input-group-addon" id="basic-addon2">Descrição</span>
+				</div>
+				
+				<div class="input-group">
+					<input class="form-control" type="text" name="hp" id="hp" value="${hp}" aria-describedby="basic-addon2"/>
+					<span class="input-group-addon" id="basic-addon2">HP</span>
+				</div>
+				
+				<div class="input-group">
+					<input class="form-control" type="text" name="peso" id="peso" value="${peso}" aria-describedby="basic-addon2"/>
+					<span class="input-group-addon" id="basic-addon2">Peso</span>
+				</div>
+				
+				<input class="btn btn-success" type="submit" id="buscar" value="Salvar" />
 			</form>
 		</div>
 	
 	<div id="lista">
-		<table>
-			<tr>
-				<th>Codigo</th>
-				<th>Descricao</th>
-				<th>Peso</th>
-				<th>HP</th>
-			</tr>
-			<c:forEach items="${jetskies}" var="j">
-			    <tr>      
-			        <td>${j._id}</td>
-			        <td>${j.descricao}</td>
-			        <td>${j.peso}</td>
-			        <td>${j.hp}</td>  
-			    </tr>
-			</c:forEach>
-		</table>
-	</div>
-
+		<div class="panel panel-default">
+			<div class="panel-heading">Jetskies</div>
+				<table class="table">
+					<tr>
+						<th>Codigo</th>
+						<th>Descricao</th>
+						<th>Peso</th>
+						<th>HP</th>
+					</tr>
+					<c:forEach items="${jetskies}" var="j">
+					    <tr>      
+					        <td>${j._id}</td>
+					        <td>${j.descricao}</td>
+					        <td>${j.peso}</td>
+					        <td>${j.hp}</td>  
+					    </tr>
+					</c:forEach>
+				</table>
+			</div>
+		</div>
 	</body>
 </html>
