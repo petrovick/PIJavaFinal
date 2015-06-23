@@ -2,19 +2,27 @@
     pageEncoding="UTF-8" import="java.util.*"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
+<link rel="stylesheet" href="jquery-ui.min.css" />
+<script type="text/javascript" src="jquery-ui.min.js" ></script>
+<script type="text/javascript" src="jquery-1.11.3.js" ></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
 
 <html>
+	<head>
+		<style type="text/css" ></style>
+	</head>
 	<body>
 		<div id="mensagem" name="mensagem">${mensagem }</div>
 		<div id="formulario">
 			<form action="JetSkiServlet" method="post">
-				<input type="hidden" name="_id" id="_id" value="${_id}"/>
+				<input class="form-control"  type="hidden" name="_id" id="_id" value="${_id}"/>
 				<label>Descricao</label>
-				<input type="text" name="descricao" id="descricao" value="${descricao}"/>
+				<input class="form-control" type="text" name="descricao" id="descricao" value="${descricao}"/>
 				<label>HP</label>
-				<input type="text" name="hp" id="hp" value="${hp}" />
+				<input class="form-control" type="text" name="hp" id="hp" value="${hp}" />
 				<label>Peso</label>
-				<input type="text" name="peso" id="peso" value="${peso}" />
+				<input class="form-control" type="text" name="peso" id="peso" value="${peso}" />
 				<input type="submit" id="buscar" value="Salvar" />
 			</form>
 		</div>

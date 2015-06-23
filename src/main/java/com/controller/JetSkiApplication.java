@@ -25,8 +25,9 @@ public class JetSkiApplication
     	String mensagem = "";
     	try
     	{
-            MongoClientURI uri  = new MongoClientURI("mongodb://petrovick:senha123@ds043002.mongolab.com:43002/nodepivii"); 
-            MongoClient mongo = new MongoClient(uri);
+            //MongoClientURI uri  = new MongoClientURI("mongodb://petrovick:senha123@ds043002.mongolab.com:43002/nodepivii");
+    		//MongoClient mongo = new MongoClient(uri);
+            MongoClient mongo = new MongoClient("localhost", 27017);
             DB db = mongo.getDB("nodepivii"); 
 	        DBCollection col = db.getCollection("nodepivii");
 	        
@@ -56,9 +57,10 @@ public class JetSkiApplication
 	
 	public List<JetSki> todos() throws Exception
     {
-	    MongoClientURI uri  = new MongoClientURI("mongodb://petrovick:senha123@ds043002.mongolab.com:43002/nodepivii"); 
-        MongoClient mongo = new MongoClient(uri);
-        DB db = mongo.getDB("nodepivii");
+        //MongoClientURI uri  = new MongoClientURI("mongodb://petrovick:senha123@ds043002.mongolab.com:43002/nodepivii");
+		//MongoClient mongo = new MongoClient(uri);
+        MongoClient mongo = new MongoClient("localhost", 27017);
+        DB db = mongo.getDB("nodepivii"); 
         DBCollection col = db.getCollection("nodepivii");
         //read example
         DBCursor cursor = col.find();
