@@ -5,7 +5,7 @@
 
 <html>
 	<body>
-		${mensagem }
+		<div id="mensagem" name="mensagem">${mensagem }</div>
 		<div id="formulario">
 			<form action="JetSkiServlet" method="post">
 				<input type="hidden" name="_id" id="_id" value="${_id}"/>
