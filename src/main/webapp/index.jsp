@@ -44,7 +44,7 @@
 	<div id="lista">
 		<div class="panel panel-default">
 			<div class="panel-heading">Jetskies</div>
-				<table class="table">
+				<table>
 					<tr>
 						<th>Codigo</th>
 						<th>Descricao</th>
