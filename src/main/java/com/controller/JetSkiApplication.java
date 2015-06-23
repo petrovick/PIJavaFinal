@@ -26,7 +26,7 @@ public class JetSkiApplication
     	try
     	{
             MongoClientURI uri  = new MongoClientURI("mongodb://petrovick:senha123@ds043002.mongolab.com:43002/nodepivii");
-    		MongoClient mongo = new MongoClient(uri);
+    		MongoClient mongo = new MongoClient(uri); 
            // MongoClient mongo = new MongoClient("localhost", 27017);
             DB db = mongo.getDB("nodepivii"); 
 	        DBCollection col = db.getCollection("nodepivii");
